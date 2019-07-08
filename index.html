@@ -177,6 +177,11 @@
     }
 
     function applyTranform(obj) {
+        // Không cho góc xoay phương Y ra ngoài khoảng 0-180
+        if(tY > 180) tY = 180;
+        if(tY < 0) tY = 0;
+
+        // Áp dụng góc xoay
         obj.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
     }
 
