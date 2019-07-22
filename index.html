@@ -14,6 +14,8 @@
         html,
         body {
             height: 100%;
+            /* for touch screen laptop */
+            touch-action: none; 
         }
 
         body {
@@ -24,15 +26,17 @@
             transform-style: preserve-3d;
         }
 
-        #drag-container, #spin-container {
+        #drag-container,
+        #spin-container {
             position: relative;
             display: flex;
             margin: auto;
             transform-style: preserve-3d;
             transform: rotateX(-10deg);
         }
-        
-        #drag-container img, #drag-container video {
+
+        #drag-container img,
+        #drag-container video {
             transform-style: preserve-3d;
             position: absolute;
             left: 0;
@@ -46,7 +50,8 @@
             -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
         }
 
-        #drag-container img:hover, #drag-container video:hover {
+        #drag-container img:hover,
+        #drag-container video:hover {
             box-shadow: 0 0 15px #fffd;
             -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
         }
@@ -56,7 +61,7 @@
             position: absolute;
             top: 100%;
             left: 50%;
-            transform: translate(-50%,-50%) rotateX(90deg);
+            transform: translate(-50%, -50%) rotateX(90deg);
             color: #fff;
         }
 
@@ -66,8 +71,8 @@
             position: absolute;
             top: 100%;
             left: 50%;
-            transform: translate(-50%,-50%) rotateX(90deg);
-            background: -webkit-radial-gradient(center center, farthest-side , #9993, transparent);
+            transform: translate(-50%, -50%) rotateX(90deg);
+            background: -webkit-radial-gradient(center center, farthest-side, #9993, transparent);
         }
 
         #music-container {
@@ -82,16 +87,21 @@
         }
 
         @keyframes spin {
-            from{
+            from {
                 transform: rotateY(0deg);
-            } to{
+            }
+
+            to {
                 transform: rotateY(360deg);
             }
         }
+
         @keyframes spinRevert {
-            from{
+            from {
                 transform: rotateY(360deg);
-            } to{
+            }
+
+            to {
                 transform: rotateY(0deg);
             }
         }
@@ -101,8 +111,8 @@
 <body>
     <div id="drag-container">
         <div id="spin-container">
-        <!-- Đổi <div> (theo video) thành <img> để dễ dàng thêm, sửa, xoá các hình -->
-        <!-- Muốn thêm ảnh thì chỉ cần thêm tag <img> hoặc <video> -->
+            <!-- Đổi <div> (theo video) thành <img> để dễ dàng thêm, sửa, xoá các hình -->
+            <!-- Muốn thêm ảnh thì chỉ cần thêm tag <img> hoặc <video> -->
             <img src="images/1.jpg" alt="">
             <img src="images/2.jpg" alt="">
             <img src="images/3.jpg" alt="">
@@ -119,109 +129,111 @@
             </video>
 
             <p>Love You</p>
-                
+
         </div>
         <div id="ground"></div>
     </div>
 
     <div id="music-container"></div>
 
+    <!-- github corner (https://github.com/tholman/github-corners) -->
+    <a href="https://github.com/HoangTran0410/3DCarousel" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#000; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
     <script>
-    // Các bạn có thể thay đổi giá trị các biến môi trường ở đây:
-    var radius = 240; // Độ rộng vòng xoay
-    var autoRotate = true; // Tự động xoay hay không
-    var rotateSpeed = -60; // đơn vị: giây/vòng. thời gian để xoay hết 1 vòng, dấu trừ để xoay ngược lại
-    var imgWidth = 120; // độ rộng ảnh (tính theo px)
-    var imgHeight = 170; // độ cao ảnh (tính theo px)
-
-    // Link nhạc nền - cho bằng null nếu không muốn nhạc nền
-    var bgMusicURL = 'https://api.soundcloud.com/tracks/191576787/stream?client_id=587aa2d384f7333a886010d5f52f302a';
-    var bgMusicControls = false; // Hiện khung điều khiển nhạc nền hay không
-
-    /*
-        CHÚ Ý:
-            + imgWidth, imgHeight sẽ dùng được cho cả video -> <video> cũng sẽ được thu nhỏ cho bằng <img>
-            + nếu imgWidth, imgHeight đủ nhỏ, có thể <video> sẽ không hiện nút play/pause
-            + Link nhạc lấy từ: https://hoangtran0410.github.io/Visualyze-design-your-own-/?theme=HoangTran&playlist=2&song=8&background=3
-            + Phiên bản 1 file .html duy nhất: https://github.com/HoangTran0410/3DCarousel/blob/master/index.html
-
-        Author: Hoang Tran, custom from code in tiktok video 
-                https://www.facebook.com/J2TEAM.ManhTuan/videos/1353367338135935/
-    */
+        // Author: Hoang Tran (https://www.facebook.com/profile.php?id=100004848287494)
 
 
-    // ===================== start =======================
-    setTimeout(init, 100);
+        // Các bạn có thể thay đổi giá trị các biến môi trường ở đây:
+        var radius = 240; // Độ rộng vòng xoay
+        var autoRotate = true; // Tự động xoay hay không
+        var rotateSpeed = -60; // đơn vị: giây/vòng. thời gian để xoay hết 1 vòng, dấu trừ để xoay ngược lại
+        var imgWidth = 120; // độ rộng ảnh (tính theo px)
+        var imgHeight = 170; // độ cao ảnh (tính theo px)
 
-    var obox = document.getElementById('drag-container');
-    var ospin = document.getElementById('spin-container');
-    var aImg = ospin.getElementsByTagName('img');
-    var aVid = ospin.getElementsByTagName('video');
-    var aEle = [...aImg, ...aVid]; // gộp 2 mảng lại
+        // Link nhạc nền - cho bằng null nếu không muốn nhạc nền
+        var bgMusicURL = 'https://api.soundcloud.com/tracks/143041228/stream?client_id=587aa2d384f7333a886010d5f52f302a';
+        var bgMusicControls = true; // Hiện khung điều khiển nhạc nền hay không
 
-    // chỉnh độ lớn ảnh
-    ospin.style.width = imgWidth + "px";
-    ospin.style.height = imgHeight + "px";
+        /*
+                CHÚ Ý:
+                    + imgWidth, imgHeight sẽ dùng được cho cả video -> <video> cũng sẽ được thu nhỏ cho bằng <img>
+                    + nếu imgWidth, imgHeight đủ nhỏ, có thể <video> sẽ không hiện nút play/pause
+                    + Link nhạc lấy từ: https://hoangtran0410.github.io/Visualyze-design-your-own-/?theme=HoangTran&playlist=2&song=8&background=3
+                    + https://api.soundcloud.com/tracks/191576787/stream?client_id=587aa2d384f7333a886010d5f52f302a
+                    + Custom from code in tiktok video  https://www.facebook.com/J2TEAM.ManhTuan/videos/1353367338135935/
+            */
 
-    // chỉnh độ lớn ground - theo radius
-    var ground = document.getElementById('ground');
-    ground.style.width = radius * 3 + "px";
-    ground.style.height = radius * 3 + "px";
 
-    function init(delayTime) {
-        for (var i = 0; i < aEle.length; i++) {
-            aEle[i].style.transform = "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
-            aEle[i].style.transition = "transform 1s";
-            aEle[i].style.transitionDelay = delayTime || (aEle.length - i) / 4 + "s";
+        // ===================== start =======================
+        setTimeout(init, 100);
+
+        var obox = document.getElementById('drag-container');
+        var ospin = document.getElementById('spin-container');
+        var aImg = ospin.getElementsByTagName('img');
+        var aVid = ospin.getElementsByTagName('video');
+        var aEle = [...aImg, ...aVid]; // gộp 2 mảng lại
+
+        // chỉnh độ lớn ảnh
+        ospin.style.width = imgWidth + "px";
+        ospin.style.height = imgHeight + "px";
+
+        // chỉnh độ lớn ground - theo radius
+        var ground = document.getElementById('ground');
+        ground.style.width = radius * 3 + "px";
+        ground.style.height = radius * 3 + "px";
+
+        function init(delayTime) {
+            for (var i = 0; i < aEle.length; i++) {
+                aEle[i].style.transform = "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
+                aEle[i].style.transition = "transform 1s";
+                aEle[i].style.transitionDelay = delayTime || (aEle.length - i) / 4 + "s";
+            }
         }
-    }
 
-    function applyTranform(obj) {
-        // Không cho góc xoay phương Y ra ngoài khoảng 0-180
-        if(tY > 180) tY = 180;
-        if(tY < 0) tY = 0;
+        function applyTranform(obj) {
+            // Không cho góc xoay phương Y ra ngoài khoảng 0-180
+            if (tY > 180) tY = 180;
+            if (tY < 0) tY = 0;
 
-        // Áp dụng góc xoay
-        obj.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
-    }
+            // Áp dụng góc xoay
+            obj.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
+        }
 
-    function playSpin(yes) {
-        ospin.style.animationPlayState = (yes?'running':'paused');
-    }
+        function playSpin(yes) {
+            ospin.style.animationPlayState = (yes ? 'running' : 'paused');
+        }
 
-    var sX, sY, nX, nY, desX = 0,
-        desY = 0,
-        tX = 0,
-        tY = 10;
+        var sX, sY, nX, nY, desX = 0,
+            desY = 0,
+            tX = 0,
+            tY = 10;
 
-    // tự động xoay
-    if (autoRotate) {
-        var animationName = (rotateSpeed > 0 ? 'spin' : 'spinRevert');
-        ospin.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`;
-    }
+        // tự động xoay
+        if (autoRotate) {
+            var animationName = (rotateSpeed > 0 ? 'spin' : 'spinRevert');
+            ospin.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`;
+        }
 
-    // thêm nhạc nền
-    if (bgMusicURL) {
-        document.getElementById('music-container').innerHTML += `
-            <audio src="${bgMusicURL}" ${bgMusicControls? 'controls': ''} autoplay loop>    
-                <p>If you are reading this, it is because your browser does not support the audio element.</p>
+        // thêm nhạc nền
+        if (bgMusicURL) {
+            document.getElementById('music-container').innerHTML += `
+            <audio src="${bgMusicURL}" ${bgMusicControls ? 'controls' : ''} autoplay loop>    
+            <p>If you are reading this, it is because your browser does not support the audio element.</p>
             </audio>
-        `;
-    }
+            `;
+        }
 
-    // cài đặt events
-    if (mobilecheck()) {
-        // ==================== Touch Events ====================
-        document.ontouchstart = function(e) {
+        // cài đặt events
+        document.onpointerdown = function (e) {
             clearInterval(obox.timer);
             e = e || window.event;
-            var sX = e.touches[0].clientX,
-                sY = e.touches[0].clientY;
+            var sX = e.clientX,
+                sY = e.clientY;
 
-            this.ontouchmove = function(e) {
+            this.onpointermove = function (e) {
                 e = e || window.event;
-                var nX = e.touches[0].clientX,
-                    nY = e.touches[0].clientY;
+                var nX = e.clientX,
+                    nY = e.clientY;
                 desX = nX - sX;
                 desY = nY - sY;
                 tX += desX * 0.1;
@@ -229,11 +241,10 @@
                 applyTranform(obox);
                 sX = nX;
                 sY = nY;
-            }
+            };
 
-            this.ontouchend = function(e) {
-                this.ontouchmove = this.ontouchend = null;
-                obox.timer = setInterval(function() {
+            this.onpointerup = function (e) {
+                obox.timer = setInterval(function () {
                     desX *= 0.95;
                     desY *= 0.95;
                     tX += desX * 0.1;
@@ -245,63 +256,18 @@
                         playSpin(true);
                     }
                 }, 17);
-            }
-
-            // return false;
-        }
-    } else {
-        // ==================== Mouse Events ====================
-        document.onmousedown = function(e) {
-            clearInterval(obox.timer);
-            e = e || window.event;
-            var sX = e.clientX,
-                sY = e.clientY;
-
-            this.onmousemove = function(e) {
-                e = e || window.event;
-                var nX = e.clientX,
-                    nY = e.clientY;
-                desX = nX - sX;
-                desY = nY - sY;
-                tX += desX * 0.1;
-                tY += desY * 0.1;
-                applyTranform(obox);
-                sX = nX;
-                sY = nY;
-            }
-
-            this.onmouseup = function(e) {
-                this.onmousemove = this.onmouseup = null;
-                obox.timer = setInterval(function() {
-                    desX *= 0.95;
-                    desY *= 0.95;
-                    tX += desX * 0.1;
-                    tY += desY * 0.1;
-                    applyTranform(obox);
-                    playSpin(false);
-                    if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
-                        clearInterval(obox.timer);
-                        playSpin(true);
-                    }
-                }, 13);
-            }
+                this.onpointermove = this.onpointerup = null;
+            };
 
             return false;
-        }
-        document.onmousewheel = function(e) {
+        };
+
+        document.onmousewheel = function (e) {
             e = e || window.event;
             var d = e.wheelDelta / 20 || -e.detail;
             radius += d;
             init(1);
         };
-    }
-
-    // https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
-    function mobilecheck() {
-        var check = false;
-        (function(a) { if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true; })(navigator.userAgent || navigator.vendor || window.opera);
-        return check;
-    }
     </script>
 </body>
 
