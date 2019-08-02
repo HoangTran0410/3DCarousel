@@ -12,4 +12,5 @@ Just **Dragggggggg** your mouse (or your hand) on the screen
  - Change color, style, .... in css code zone
 
 # ScreenShots:
+![Using mouse to drag](./screenshots/screenshot2.gif)
 ![Using mouse to drag](./screenshots/screenshot1.gif)
