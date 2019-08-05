@@ -1,6 +1,7 @@
 # 3D Carousel with Mouse control!
 
-**Live Demo** [Here](https://hoangtran0410.github.io/3DCarousel/)
+**Live Demo** [Here (index.html)](https://hoangtran0410.github.io/3DCarousel/)
+**Bonus Demo** [Here (3DTweenMax.html)](https://hoangtran0410.github.io/3DCarousel/3DTweenMax.html)
 
 # How to play
 Just **Dragggggggg** your mouse (or your hand) on the screen
