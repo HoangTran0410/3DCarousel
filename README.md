@@ -14,4 +14,3 @@ Running code is in **index.html**, **3DTweenMax.html** just a **bonus** (collect
 
 # ScreenShots:
 ![Using mouse to drag](./screenshots/screenshot.png)
-![Using mouse to drag](./screenshots/screenshot1.gif)
