@@ -42,16 +42,17 @@
         transform: rotateX(-10deg);
       }
 
-	  #drag-container .item {
+      #drag-container img,
+      #drag-container video {
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
         position: absolute;
         left: 0;
         top: 0;
-        /*width: 100%;*/
-        /*height: 100%;*/
-        /*line-height: 200px;*/
-        /*font-size: 50px;*/
+        width: 100%;
+        height: 100%;
+        line-height: 200px;
+        font-size: 50px;
         text-align: center;
         -webkit-box-shadow: 0 0 8px #fff;
         box-shadow: 0 0 8px #fff;
@@ -59,23 +60,15 @@
           linear-gradient(transparent, transparent, #0005);
       }
 
-      #drag-container img,
-      #drag-container video {
-      	width: 100%;
-      }
-
-      #drag-container .item p {
-      	color: white;
-      }
-		
-      #drag-container .item:hover {
+      #drag-container img:hover,
+      #drag-container video:hover {
         -webkit-box-shadow: 0 0 15px #fffd;
         box-shadow: 0 0 15px #fffd;
         -webkit-box-reflect: below 10px
           linear-gradient(transparent, transparent, #0007);
       }
 
-      #groundText {
+      #drag-container p {
         font-family: Serif;
         position: absolute;
         top: 100%;
@@ -155,13 +148,10 @@
     <div id="drag-container">
       <div id="spin-container">
         <!-- Add your images (or video) here -->
-        <div class="item">
-	        <img
-	          src="https://images.pexels.com/photos/206395/pexels-photo-206395.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-	          alt=""
-	        />
-	        <p>Hello World</p>
-    	</div>
+        <img
+          src="https://images.pexels.com/photos/206395/pexels-photo-206395.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          alt=""
+        />
         <img
           src="https://images.pexels.com/photos/1391498/pexels-photo-1391498.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt=""
@@ -203,7 +193,7 @@
         </video>
 
         <!-- Text at center of ground -->
-        <p id="groundText">3D Tiktok Carousel</p>
+        <p>3D Tiktok Carousel</p>
       </div>
       <div id="ground"></div>
     </div>
@@ -243,10 +233,9 @@
 
       var odrag = document.getElementById("drag-container");
       var ospin = document.getElementById("spin-container");
-      // var aImg = ospin.getElementsByTagName("img");
-      // var aVid = ospin.getElementsByTagName("video");
-      // var aEle = [...aImg, ...aVid]; // combine 2 arrays
-      var aEle = document.getElementsByClassName('item');
+      var aImg = ospin.getElementsByTagName("img");
+      var aVid = ospin.getElementsByTagName("video");
+      var aEle = [...aImg, ...aVid]; // combine 2 arrays
 
       // Size of images
       ospin.style.width = imgWidth + "px";
